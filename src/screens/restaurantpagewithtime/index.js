@@ -1,0 +1,288 @@
+import React, { Component } from "react";
+import { View, StatusBar,ImageBackground,Image,ScrollView } from "react-native";
+import {Container,Header,Left,Button,Icon,Body,Title,Content,Text,Segment,List, ListItem, Right, Thumbnail,Footer,Badge,Form,Picker,Item} from "native-base";
+
+import { Col, Row, Grid } from "react-native-easy-grid";
+
+import styles from "./styles";
+
+const Img1 = require("../../../assets/banner1.jpg");
+
+class RestaurantwithTime extends Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      seg: 1
+    };
+  }
+
+
+  render() {
+    return (
+
+    	<Container>
+            <StatusBar hidden={true} />
+     <Content>
+      
+
+     <View style={styles.headerContainer}>
+        <ImageBackground
+          style={styles.headerBackgroundImage}
+          source={Img1}
+>
+<View style={styles.headerColumn}>
+
+<Grid>
+<Row>
+<Col style={{ width: '82%' }}>
+<Button transparent onPress={() => this.props.navigation.navigate('Reservation')}>
+<Icon  name='angle-left' style={{color: '#fff',marginLeft: 10, fontSize: 30, fontWeight: 'normal'}}/>
+</Button>
+</Col>
+<Col style={{ width: '8%', marginTop: 5 }}>
+<Icon name='heart' style={{color: '#fff',fontSize: 18}}/>
+</Col>
+<Col style={{ width: '8%', marginTop: 5 }}>
+<Icon name='share-alt' style={{color: '#fff',fontSize: 18}}/>
+</Col>
+</Row>
+<Row>
+<Col style={{alignItems: 'flex-end'}}>
+<View style={{flexDirection: 'row', marginRight: 10, marginTop: 50 }}>
+<Icon name='star' style={{color: '#FCAF00',fontSize: 20,marginRight: 5, }}/>
+<Icon name='star-half-o' style={{color: '#FCAF00',fontSize: 20,marginRight: 5,}}/>
+<Icon name='star-o' style={{color: '#fff',fontSize: 20,marginRight: 5}}/>
+<Icon name='star-o' style={{color: '#fff',fontSize: 20,marginRight: 5}}/>
+<Icon name='star-o' style={{color: '#fff',fontSize: 20,marginRight: 5}}/>
+</View>
+</Col>
+</Row>
+</Grid>
+           
+           
+</View>
+</ImageBackground>
+</View>
+<View style={{padding: 10}}>
+<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>06:00 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>06:30 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>07:00 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>07:30 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>08:00 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>08:30 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>09:00 PM</Text>
+</Button>
+<Button small danger style={{marginRight: 5}}>
+            <Text style={{fontSize: 11}}>09:30 PM</Text>
+</Button>
+</ScrollView>
+</View>
+
+<View style={{alignSelf: "center", padding:5, borderColor: '#ddd', borderWidth: 1, borderRightWidth: 0,borderLeftWidth: 0, width: '100%' }}>
+<Text style={{fontSize: 11,alignSelf:'center'}}><Icon name="calendar-o" style={{fontSize: 11}}/> Table for 2 tonight at 8:30 PM <Icon name='caret-down' style={{fontSize: 13}}/></Text>
+</View>
+
+
+<Grid style={{padding: 10}}>
+<Col style={{width: "80%"}}>
+<View>
+<Text style={{marginTop: 5, marginBottom: 5, fontSize: 20, fontWeight: 'bold'}}>The Costal Gril - Gril</Text>
+<Text note style={{fontSize: 13}}>Desserts, Italian, Sandwiches {"\n"}American, Fastfood</Text>
+<Text note style={{fontSize: 13}}><Icon name='clock-o' style={{fontSize: 10,color:'#ccc',marginRight: 5}}/> 10:30 A.M. - 09:00 P.M.</Text>
+</View>
+</Col>
+<Col style={{alignItems: 'flex-end', justifyContent: 'flex-end'}}>
+<Text style={{marginTop: 5, marginBottom: 5,}}>5 KM</Text>
+</Col>
+</Grid>
+
+<View style={{padding: 10}}>
+<ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+<Segment>
+          <Button samll
+            first
+            active={this.state.seg === 1 ? true : false}
+            onPress={() => this.setState({ seg: 1 })}
+            style={styles.segmentbtn}
+          >
+            <Text uppercase={false} style={{fontSize: 15}}>Main Dishes</Text>
+          </Button>
+          <Button samll
+            active={this.state.seg === 2 ? true : false}
+            onPress={() => this.setState({ seg: 2 })}
+            style={styles.segmentbtn}
+          >
+            <Text uppercase={false} style={{fontSize: 15}}>Appetizers</Text>
+          </Button>
+          <Button samll
+            last
+            active={this.state.seg === 3 ? true : false}
+            onPress={() => this.setState({ seg: 3 })}
+            style={styles.segmentbtn}
+          >
+            <Text uppercase={false} style={{fontSize: 15}}>Sides</Text>
+          </Button>
+          <Button samll
+            last
+            active={this.state.seg === 4 ? true : false}
+            onPress={() => this.setState({ seg: 4 })}
+            style={styles.segmentbtn}
+          >
+            <Text uppercase={false} style={{fontSize: 15}}>Italian</Text>
+          </Button>
+        </Segment>
+</ScrollView>
+</View>
+
+<View>
+
+          {this.state.seg === 1 && 
+            <List>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row',padding: 0, margin:0}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Dish One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Dish One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Dish One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Dish One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+
+
+            
+          </List>
+
+          }
+          {this.state.seg === 2 && 
+            <List>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row',padding: 0, margin:0}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Appetizer One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Appetizer {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Appetizer {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Appetizer {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+
+
+            
+          </List>
+          }
+          {this.state.seg === 3 && 
+            <List>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row',padding: 0, margin:0}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Sides One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Sides {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Sides {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Sides {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+
+
+            
+          </List>}
+          {this.state.seg === 4 && 
+            <List>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row',padding: 0, margin:0}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Italian One {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Italian {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Italian {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+            <ListItem onPress={() => this.props.navigation.navigate('Booking')} style={{flexDirection: 'row'}}>
+              <View style={{marginRight: 10}}><Thumbnail style={{width: 45, height: 45, borderRadius: 45/2}} source={Img1} /></View>
+              <View><Text>Italian {'\n'}<Text note>Doing what you like will..{'\n'}Doing what you like will..{'\n'}</Text><Text note>100 Cookies</Text></Text></View>
+              <Right style={{alignItems: 'flex-end',flex: 1}}><Text style={{textAlign: 'right'}}>$125</Text></Right>
+            </ListItem>
+
+
+
+            
+          </List>
+
+          }
+
+
+
+</View>
+      </Content>
+      <Footer style={{backgroundColor: '#63BC59'}}>
+      <Left><Text style={{color: '#fff',fontSize: 14,marginLeft: 15}}>1 ITEM . $5.00</Text></Left>
+      <Right><Text style={{color: '#fff',fontSize: 14,marginRight: 10}}><Icon name="shopping-cart" style={{color: '#fff', fontSize: 15, marginRight: 10}}/> VIEW TALABIE</Text></Right>
+      </Footer>
+      </Container>
+    );
+  }
+}
+
+export default RestaurantwithTime;
